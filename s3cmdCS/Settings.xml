@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<settings>
-  <accessKey>47a90667-4fc2-4d82-ad5d-7ad05d8c49cd</accessKey>
-  <secretKey>8073671250c40e00fd1bde8a2a743e77474fb9275df213ca29c4e693db595a2e</secretKey>
-  <Endpoint>https://s3.ir-thr-at1.arvanstorage.com</Endpoint>
-  <BucketName>shafa-s1</BucketName>
-</settings>
