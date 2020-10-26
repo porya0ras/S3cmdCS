@@ -34,7 +34,7 @@ namespace s3cmdCS
             {
                 if (args[0] == "--put")
                 {
-                    UploadFile(s3Client, args[1], BucketName).Wait();
+                    UploadFile(s3Client, args[1], BucketName);
                     List(s3Client, BucketName);
                 }
             }
@@ -42,19 +42,19 @@ namespace s3cmdCS
             {
                 List(s3Client, BucketName);
             }
-            Console.ReadKey();
+            //Console.ReadKey();
         }
        public static void List(AmazonS3Client client, string bucketName)
         {
-            ListObjectsRequest request = new ListObjectsRequest();
+            ListObjectsV2Request request = new ListObjectsV2Request();
             request.BucketName = bucketName;
-            ListObjectsResponse response = client.ListObjects(request);
+            ListObjectsV2Response response = client.ListObjectsV2(request);
             foreach (S3Object o in response.S3Objects)
             {
                 Console.WriteLine("{0}\t{1}\t{2}", o.Key, o.Size, o.LastModified);
             }
         }
-        public static async Task UploadFile(AmazonS3Client client, string localpath,string bucketName)
+        public static void UploadFile(AmazonS3Client client, string localpath,string bucketName)
         {
             try
             {
@@ -76,8 +76,9 @@ namespace s3cmdCS
                     new EventHandler<UploadProgressArgs>
                         (uploadRequest_UploadPartProgressEvent);
                 progress = new ProgressBar();
-                await fileTransferUtility.UploadAsync(uploadRequest);
+                fileTransferUtility.Upload(uploadRequest);
                 Console.WriteLine("Upload completed");
+                progress.Dispose();
             }
             catch (AmazonS3Exception amazonS3Exception)
             {
