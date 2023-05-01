@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <accessKey>47</accessKey>
+  <secretKey>8073671250c</secretKey>
+  <Endpoint>https://s3.ir-thr-at1.arvanstorage.com</Endpoint>
+  <BucketName>shafa-s1</BucketName>
+</settings>
